@@ -299,13 +299,12 @@ export async function getCollectionProducts({
       sortKey: sortKey === 'CREATED_AT' ? 'CREATED' : sortKey
     }
   });
-
-  if (!res.body.data.collection) {
+  if (!res.body.data.collectionByHandle) {
     console.log(`No collection found for \`${collection}\``);
     return [];
   }
 
-  return reshapeProducts(removeEdgesAndNodes(res.body.data.collection.products));
+  return reshapeProducts(removeEdgesAndNodes(res.body.data.collectionByHandle.products));
 }
 
 export async function getCollections(): Promise<Collection[]> {
